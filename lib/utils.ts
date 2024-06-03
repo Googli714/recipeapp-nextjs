@@ -2,7 +2,11 @@
 
 export function AddRecipeToLS(id: string) {
 
-    if(IsInLS(id)) {
+    if (typeof window !== 'undefined') {
+        return
+    }
+
+    if (IsInLS(id)) {
         return
     }
 
@@ -13,8 +17,13 @@ export function AddRecipeToLS(id: string) {
 }
 
 export function RemoveRecipeFromLS(id: string) {
-    if(!IsInLS(id)) return
-    
+
+    if (typeof window !== 'undefined') {
+        return
+    }
+
+    if (!IsInLS(id)) return
+
     let t = localStorage.getItem("favorites");
     let ta = t?.split(' ');
 
@@ -32,6 +41,11 @@ export function RemoveRecipeFromLS(id: string) {
 }
 
 export function IsInLS(id: string): boolean | undefined {
+
+    if (typeof window !== 'undefined') {
+        return false;
+    }
+
     let t = localStorage.getItem("favorites");
     let ta = t?.split(' ');
 
