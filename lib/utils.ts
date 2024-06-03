@@ -1,3 +1,5 @@
+'use client'
+
 export function AddRecipeToLS(id: string) {
 
     if(IsInLS(id)) {
